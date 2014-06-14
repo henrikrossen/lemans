@@ -10,7 +10,6 @@ window.widget["positionMap"] = (function() {
 
 	function setShadows() {
 		var max = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
-		console.log(max)
 		$(".map-wrapper").removeClass("show-shadow-before");
 		$(".map-wrapper").removeClass("show-shadow-after");
 		if(max > 0) {

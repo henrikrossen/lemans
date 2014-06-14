@@ -16,6 +16,7 @@
     <script src="/javascripts/weatherinfo-widget.js"></script>
     <script src="/javascripts/trackinfo-widget.js"></script>
     <script src="/javascripts/position-map.js"></script>
+    <script src="/javascripts/progress.js"></script>
 
     <script>
 	    $(function() {
@@ -24,6 +25,7 @@
 			window.widget.weatherinfo.init();
 			window.widget.carsinfo.init();
 			window.widget.positionMap.init();
+      window.widget.progress.init();
 
 			setInterval(function() {	
 				loadData();
@@ -39,6 +41,7 @@
 				window.widget.weatherinfo.bind(data.track.weather);
 				window.widget.carsinfo.bind(data);
 				window.widget.positionMap.bind(data);
+        window.widget.progress.bind(data);
 			});
 		};
 
@@ -58,6 +61,7 @@
   </head>
 
   <body>
+  <%- include widget-progress.ejs %>  
   <%- include widget-position-map.ejs %>    
 
   	<div id="trackInfo" class="row">
