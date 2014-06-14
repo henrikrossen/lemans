@@ -8,16 +8,16 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.0/hogan.js"></script>
 
-    <script>
-		var driverStatusTypes = [
-				"Unknown",
-			    "Retired",
-				"Run",
-				"Out",
-				"Pit"];
+    <script src="/javascripts/carsinfo-widget.js"></script>
+    <script src="/javascripts/weatherinfo-widget.js"></script>
+    <script src="/javascripts/trackinfo-widget.js"></script>
 
+    <script>
 	    $(function() {
 			loadData();
+			window.widget.trackinfo.init();
+			window.widget.weatherinfo.init();
+			window.widget.carsinfo.init();
 
 			setInterval(function() {	
 				loadData();
@@ -26,9 +26,13 @@
 
 	    function loadData() {
 			checkVersion();
-			loadTrackInfo();
-			loadWeatherInfo();
-	        loadCarsInfo();
+
+			var url = "/data";
+			$.getJSON( url, function( data ) {
+				window.widget.trackinfo.bind(data.track);
+				window.widget.weatherinfo.bind(data.track.weather);
+				window.widget.carsinfo.bind(data.cars);
+			});
 		};
 
     	var lastVersion = null;
@@ -43,95 +47,12 @@
     			}
 	    	})
 	    }
-
-		function loadTrackInfo() {
-			var url = "/data/track";
-			$.getJSON( url, function( data ) {
-
-				var items = [];
-				/*
-				$.each( data, function( key, val ) {
-					items.push( "<li>" + key + ": " + val + "</li>")
-				});
-				*/		
-
-				items.push( "<li>safetyCar: " + data.safetyCar + "</li>")
-
-				var content = $( "<ul/>", {
-					"class": "list",
-					html: items.join( "" )
-				});
-
-				$("#trackInfo").html(content);
-			});	
-		}
-
-		function loadWeatherInfo() {
-			var url = "/data/weather";
-			$.getJSON( url, function( data ) {
-
-				var items = [];
-				$.each( data, function( key, val ) {
-					items.push( "<li>" + key + ": " + val + "</li>")
-				});
-			
-				var content = ($( "<ul />", {
-					"class": "list",
-					html: items.join( "" )
-				}));
-
-				$("#weatherInfo").html(content);
-			});	
-		}
-
-		function loadCarsInfo() {
-			var url = "/data/cars";
-			$.getJSON( url, function( data ) {
-				var car = data;
-				var content = [];
-
-				$.each( car, function( key, val ) {
-					var items = [];
-					var position =  key + 1;
-					var driverStatus = driverStatusTypes[val.driverStatus];
-
-					var pilotName = "";
-					var pilotPicture = "http://live.fiawec.com/wpphpFichiers/1/pilote/143/Driver_Unknow_.png";
-
-					if (val.pilot !== null) {
-						pilotName = val.pilot.firstName + " " + val.pilot.lastName;
-						pilotPicture = val.pilot.picture;
-					};
-
-					items.push( "<li><strong>Pos " + position + ". " + val.team + "</strong></li>")
-					items.push( "<li><strong>" + pilotName + "</strong></li>")
-					items.push( "<li><img width='66' height='100' src='" + pilotPicture + "' alt='" + pilotName + "' /></li>")
-					items.push( "<li>Car: " + val.carBrand + " " + val.carName + "</li>")
-					items.push( "<li>Average Speed: " + val.averageSpeed + "</li>")
-					items.push( "<li>Last Time: " + val.lastTimeInMiliseconds + "</li>")
-					items.push( "<li>Best Time: " + val.bestTimeInMiliseconds + "</li>")
-					items.push( "<li>Laps: " + val.laps + "</li>")
-					items.push( "<li>Time Difference: " + val.timeDifference + "</li>")
-					items.push( "<li>Pits: " + val.pits + "</li>")
-					items.push( "<li>State: " + driverStatus + "</li>")
-					items.push( "<li>Tires: " + val.tires + "</li>")
-
-					content.push($( "<ul />", {
-						"class": "car-list",
-						"id": key,
-						html: items.join( "" )
-					}));
-				});
-
-				$("#carInfo").html(content);
-			});	
-		}
     </script>
   </head>
 
   <body>
-  	<div id="trackInfo" class="row"><h2>Track info loading...</h2></div>
-  	<div id="weatherInfo" class="row"><h2>Weather info loading...</h2></div>
+  	<!--<div id="trackInfo" class="row"><h2>Track info loading...</h2></div>-->
+  	<!--<div id="weatherInfo" class="row"><h2>Weather info loading...</h2></div>-->
   	<div id="carInfo" class="row"><h2>Car info loading...</h2></div>
   	   
     <!--<p>Welcome to <%= title %></p>-->
