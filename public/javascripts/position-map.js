@@ -34,9 +34,9 @@ window.widget["positionMap"] = (function() {
 			html += lapHtml.replace("%lap%", lap[0].laps);
 
 			_.each(lap, function(car) {
-				var carHtml = "<div class='driver %class%'>%car%</div>";
+				var carHtml = "%gap%<div class='driver %class%'>%car%</div>";
 				var category = "";
-
+				var gap = "";
 				if(car.category != null) {
 					category = car.category;
 				}
@@ -46,6 +46,27 @@ window.widget["positionMap"] = (function() {
 					cls += " in-pit";
 				}
 
+				if(car.timeDifference.indexOf("Lap") < 0 && car.timeDifference != "") {
+					
+					var t = car.timeDifference; 
+					var minutes = 0;
+					var seconds = 0;
+					if(t.indexOf(":") >= 0) {
+						var tokens = t.split(":")
+						minutes = tokens[0];
+						seconds = tokens[1].split(".")[0];
+					} else {
+						seconds = t.split(".")[0];
+					}
+					var text = seconds + "s";
+					if(minutes > 0) {
+						text = minutes + "m " + text;
+					}
+
+					gap = "<div class='gap " + cls + "'>" + text + "</div>"
+				}
+
+				carHtml = carHtml.replace("%gap%", gap);
 				carHtml = carHtml.replace("%car%", car.number);
 				carHtml = carHtml.replace("%class%", cls);
 				
