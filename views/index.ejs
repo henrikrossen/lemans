@@ -10,6 +10,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.0/hogan.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
 
     <script src="/javascripts/carsinfo-widget.js"></script>
     <script src="/javascripts/weatherinfo-widget.js"></script>
@@ -59,11 +60,13 @@
   <body>
   	<!--<div id="trackInfo" class="row"><h2>Track info loading...</h2></div>-->
   	<!--<div id="weatherInfo" class="row"><h2>Weather info loading...</h2></div>-->
-  	<div id="carInfo" class="row"><h2>Car info loading...</h2></div>
+  	
+  	<div id="carInfo" class="row">
+  		<h2>Car info loading...</h2>
+  		<%- include widget-carsinfo.ejs %>
+  	</div>
   	   
-    <!--<p>Welcome to <%= title %></p>-->
-
-    <%- include widget-position-map.ejs %>
+    <%- include widget-position-map.ejs %>    
   </body>
 </html>
 

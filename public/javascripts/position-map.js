@@ -10,14 +10,16 @@ window.widget["positionMap"] = (function() {
 
 	function setShadows() {
 		var max = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
-		
+		console.log(max)
 		$(".map-wrapper").removeClass("show-shadow-before");
 		$(".map-wrapper").removeClass("show-shadow-after");
-		if($("#map").scrollLeft() > 0) {
-			$(".map-wrapper").addClass("show-shadow-before");
-		}
-		if($("#map").scrollLeft() < max) {
-			$(".map-wrapper").addClass("show-shadow-after");		
+		if(max > 0) {
+			if($("#map").scrollLeft() > 0) {
+				$(".map-wrapper").addClass("show-shadow-before");
+			}
+			if($("#map").scrollLeft() < max) {
+				$(".map-wrapper").addClass("show-shadow-after");		
+			}
 		}
 	}
 
