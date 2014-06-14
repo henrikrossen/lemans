@@ -9,6 +9,15 @@ window.widget["trackinfo"] = (function() {
 	};
 
 	var bind = function(data) {
+
+		Handlebars.registerHelper('safetyCarText', function(safetyCar) {
+		  return safetyCar ? "Yes" : "No";
+		});
+
+		Handlebars.registerHelper('qualifyText', function(qualify) {
+		  return qualify ? "Yes" : "No";
+		});
+
 		$('#trackInfo').html(template(data));
 	}
 
