@@ -6,22 +6,10 @@ window.widget["trackinfo"] = (function() {
 	};
 
 	var bind = function(data) {
-	
-		var items = [];
-		/*
-		$.each( data, function( key, val ) {
-			items.push( "<li>" + key + ": " + val + "</li>")
-		});
-		*/		
+		var source = $("#track-template").html(); 
+		var template = Handlebars.compile(source); 
 
-		items.push( "<li>safetyCar: " + data.safetyCar + "</li>")
-
-		var content = $( "<ul/>", {
-			"class": "list",
-			html: items.join( "" )
-		});
-
-		//$("#trackInfo").html(content);
+		$('#trackInfo').html(template(data));
 	}
 
 	return {

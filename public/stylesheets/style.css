@@ -22,10 +22,17 @@ ul {
 	 height: 28em;
 	 padding: 5px;
 	 list-style: none;
-
 	 font-size: 0.8em;
  }
 
+.list {
+	 border: 1px solid #000;
+	 margin: 1em;
+	 width: 16em;
+	 padding: 5px;
+	 list-style: none;
+	 font-size: 0.8em;
+ }
 
 .position-map {
 	display: flex;
