@@ -6,12 +6,14 @@
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.0/hogan.js"></script>
 
     <script src="/javascripts/carsinfo-widget.js"></script>
     <script src="/javascripts/weatherinfo-widget.js"></script>
     <script src="/javascripts/trackinfo-widget.js"></script>
+    <script src="/javascripts/position-map.js"></script>
 
     <script>
 	    $(function() {
@@ -19,6 +21,7 @@
 			window.widget.trackinfo.init();
 			window.widget.weatherinfo.init();
 			window.widget.carsinfo.init();
+			window.widget.positionMap.init();
 
 			setInterval(function() {	
 				loadData();
@@ -33,6 +36,7 @@
 				window.widget.trackinfo.bind(data.track);
 				window.widget.weatherinfo.bind(data.track.weather);
 				window.widget.carsinfo.bind(data.cars);
+				window.widget.positionMap.bind(data);
 			});
 		};
 
