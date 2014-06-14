@@ -8,17 +8,16 @@ window.widget["carsinfo"] = (function() {
 		"Out",
 		"Pit"];
 
+	var template;
+
 	var init = function() {
+		var source = $("#cars-list-template").html(); 
+		template = Handlebars.compile(source); 
 	};
 
 	var bind = function(data) {
-		
 		var car = data;
-		var content = [];
-
-		var source = $("#cars-list-template").html(); 
-		var template = Handlebars.compile(source); 
-
+		
 		Handlebars.registerHelper('position', function(car) {
 		  return data.cars.indexOf(car) + 1;
 		});
