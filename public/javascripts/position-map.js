@@ -23,9 +23,14 @@ window.widget["positionMap"] = (function() {
 				if(car.category != null) {
 					category = car.category;
 				}
+				var cls = category.replace(/\s/g,'-').toLowerCase();
+
+				if(car.driverStatus == 4) {
+					cls += " in-pit";
+				}
 
 				carHtml = carHtml.replace("%car%", car.number);
-				carHtml = carHtml.replace("%class%", category.replace(/\s/g,'-').toLowerCase());
+				carHtml = carHtml.replace("%class%", cls);
 				
 				html += carHtml;
 			})
