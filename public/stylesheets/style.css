@@ -58,7 +58,6 @@ ul {
 }
 
 .position-map .driver {
-	background-color: #3178bb;
 	border-radius: 50%;
 	width: 32px;
 	height: 32px;
@@ -68,6 +67,22 @@ ul {
 	text-align: center;
 	margin: 5px 0;
 	color: rgba(255,255,255,0.6);
+}
+
+.driver.lm-p1 {
+	background-color: #c0392b;
+}
+.driver.lm-p2 {
+	background-color: #3178bb;
+}
+
+.driver.lm-gte-pro {
+	background-color: #27ae60;
+}
+
+.driver.lm-gte-am {
+	background-color: #f1c40f;
+	color: rgba(0,0,0,0.4);
 }
 
 .position-map header {
