@@ -25,9 +25,23 @@
 	    });
 
 	    function loadData() {
+			checkVersion();
 			loadTrackInfo();
 			loadWeatherInfo();
 	        loadCarsInfo();
+		};
+
+    	var lastVersion = null;
+	    function checkVersion() {
+	    	$.ajax({url: "/version"}).success(function(data) {
+    			if(lastVersion == null) {
+    				lastVersion = data;
+    			}
+
+    			if(lastVersion != data) {
+    				window.location.reload(true);
+    			}
+	    	})
 	    }
 
 		function loadTrackInfo() {
