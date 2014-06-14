@@ -23,7 +23,6 @@ ul {
 	 height: 28em;
 	 padding: 5px;
 	 list-style: none;
-
 	 font-size: 0.8em;
  }
 
@@ -33,6 +32,14 @@ ul {
  	color: #8fa0b2;
  }
 
+.list {
+	 border: 1px solid #000;
+	 margin: 1em;
+	 width: 16em;
+	 padding: 5px;
+	 list-style: none;
+	 font-size: 0.8em;
+ }
 
 .position-map {
 	position: relative;

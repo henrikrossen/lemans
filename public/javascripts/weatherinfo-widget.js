@@ -6,18 +6,10 @@ window.widget["weatherinfo"] = (function() {
 	};
 
 	var bind = function(data) {
-	
-		var items = [];
-		$.each( data, function( key, val ) {
-			items.push( "<li>" + key + ": " + val + "</li>")
-		});
-	
-		var content = ($( "<ul />", {
-			"class": "list",
-			html: items.join( "" )
-		}));
+		var source = $("#weather-template").html(); 
+		var template = Handlebars.compile(source); 
 
-		//$("#weatherInfo").html(content);
+		$('#weatherInfo').html(template(data));
 	}
 
 	return {
