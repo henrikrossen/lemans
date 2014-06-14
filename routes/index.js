@@ -10,4 +10,10 @@ router.get('/', function(req, res) {
       });
 });
 
+var ticks = new Date().getTime();
+router.get('/version', function(req, res) {
+    res.send(ticks.toString());
+})
+
+
 module.exports = router;

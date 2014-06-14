@@ -8,6 +8,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
 
     <script>
+
+
 		var driverStatusTypes = [
 				"Unknown",
 			    "Retired",
@@ -19,11 +21,23 @@
 			loadCarsInfo();
 
 			setInterval(function() {	
-				//loadTrackInfo();
-				//loadWeatherInfo();
+				checkVersion();
 		        loadCarsInfo();
 		    }, 10000);
 	    });
+
+    	var lastVersion = null;
+	    function checkVersion() {
+	    	$.ajax({url: "/version"}).success(function(data) {
+    			if(lastVersion == null) {
+    				lastVersion = data;
+    			}
+
+    			if(lastVersion != data) {
+    				window.location.reload(true);
+    			}
+	    	})
+	    }
 
 		function loadTrackInfo() {
 			var url = "/data/track";
