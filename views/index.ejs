@@ -2,8 +2,9 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,700italic,500italic,900,900italic,400italic,300italic,100italic' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.0/hogan.js"></script>
@@ -135,6 +136,8 @@
   	<div id="carInfo" class="row"><h2>Car info loading...</h2></div>
   	   
     <!--<p>Welcome to <%= title %></p>-->
+
+    <%- include widget-position-map.ejs %>
   </body>
 </html>
 
