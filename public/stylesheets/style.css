@@ -1,0 +1,23 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+ul {
+	float: left;
+}
+
+.car-list {
+	 border: 1px solid #000;
+	 margin: 1em;
+	 width: 16em;
+	 height: 32em;
+	 padding: 5px;
+	 list-style: none;
+
+	 font-size: 0.8em;
+ }
