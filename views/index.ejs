@@ -8,6 +8,13 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
 
     <script>
+		var driverStatusTypes = [
+				"Unknown",
+			    "Retired",
+				"Run",
+				"Out",
+				"Pit"];
+
 	    $(function() {
 			loadCarsInfo();
 
@@ -67,6 +74,7 @@
 				$.each( car, function( key, val ) {
 					var items = [];
 					var position =  key + 1;
+					var driverStatus = driverStatusTypes[val.driverStatus];
 
 					var pilotName = "";
 					var pilotPicture = "http://live.fiawec.com/wpphpFichiers/1/pilote/143/Driver_Unknow_.png";
@@ -82,14 +90,14 @@
 					
 					items.push( "<li>" + val.carBrand + " " + val.carName + "</li>")
 					
-					items.push( "<li>Average Speed: " + val.averageSpeed + "</li>")
+					items.push( "<li>Average Speed: " + val.averageSpeed + " km/h</li>")
 					items.push( "<li>Last Time: " + val.lastTimeInMiliseconds + "</li>")
 					items.push( "<li>Best Time: " + val.bestTimeInMiliseconds + "</li>")
 					
 					items.push( "<li>Laps: " + val.laps + "</li>")
 					items.push( "<li>Time Difference: " + val.timeDifference + "</li>")
 					items.push( "<li>Pits: " + val.pits + "</li>")
-					items.push( "<li>Driver Status: " + val.driverStatus + "</li>")
+					items.push( "<li>State: " + driverStatus + "</li>")
 					items.push( "<li>Tires: " + val.tires + "</li>")
 
 					content.push($( "<ul />", {
