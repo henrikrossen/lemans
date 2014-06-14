@@ -20,20 +20,20 @@
 
     <script>
 	    $(function() {
-			loadData();
-			window.widget.trackinfo.init();
-			window.widget.weatherinfo.init();
-			window.widget.carsinfo.init();
-			window.widget.positionMap.init();
-      window.widget.progress.init();
+  			loadData();
+  			window.widget.trackinfo.init();
+  			window.widget.weatherinfo.init();
+  			window.widget.carsinfo.init();
+  			window.widget.positionMap.init();
+        window.widget.progress.init();
 
-			setInterval(function() {	
-				loadData();
-		    }, 10000);
+  			setInterval(function() {	
+  				loadData();
+  		    }, 10000);
 	    });
 
 	    function loadData() {
-			checkVersion();
+			 checkVersion();
 
 			var url = "/data";
 			$.getJSON( url, function( data ) {

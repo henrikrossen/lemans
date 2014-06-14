@@ -39,12 +39,12 @@ ul {
 	 padding: 5px;
 	 list-style: none;
 	 font-size: 0.8em;
- }
+}
 
 .position-map {
 	position: relative;
 	min-width: 100%;
-	overflow-x: scroll;
+	overflow-x: auto;
 }
 
 .position-map .map-content {
