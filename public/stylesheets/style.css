@@ -34,14 +34,56 @@ ul {
 
 
 .position-map {
+	position: relative;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-wrap: nowrap;
 	flex-wrap: nowrap;
 	-webkit-flex-direction: row;
 	flex-direction: row;
-	width: 100%;
+	min-width: 100%;
+	overflow-x: scroll;
 }
+
+.map-wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.map-wrapper:before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 0;
+	bottom: -10px;
+	width: 50px;
+	z-index: 10;
+
+	background: -moz-linear-gradient(left, rgba(43,50,60,1) 0%, rgba(43,50,60,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(43,50,60,1)), color-stop(100%,rgba(43,50,60,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(43,50,60,1) 0%,rgba(43,50,60,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(43,50,60,1) 0%,rgba(43,50,60,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(43,50,60,1) 0%,rgba(43,50,60,0) 100%); /* IE10+ */
+	background: linear-gradient(to right, rgba(43,50,60,1) 0%,rgba(43,50,60,0) 100%); /* W3C */
+}
+
+.map-wrapper:after {
+	content: "";
+	position: absolute;
+	top: -10px;
+	right: 0;
+	bottom: -10px;
+	width: 50px;
+	z-index: 10;
+
+	background: -moz-linear-gradient(left, rgba(43,50,60,0) 0%, rgba(43,50,60,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(43,50,60,0)), color-stop(100%,rgba(43,50,60,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(43,50,60,0) 0%,rgba(43,50,60,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(43,50,60,0) 0%,rgba(43,50,60,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(43,50,60,0) 0%,rgba(43,50,60,1) 100%); /* IE10+ */
+	background: linear-gradient(to right, rgba(43,50,60,0) 0%,rgba(43,50,60,1) 100%); /* W3C */
+}
+
 
 .position-map .lap {
 	border-left: 1px solid #5c6873;
@@ -55,6 +97,8 @@ ul {
 	flex-direction: column;
 	-webkit-align-items: center;
 	align-items: center;
+
+	min-width: 50px;
 }
 
 .position-map .driver {
