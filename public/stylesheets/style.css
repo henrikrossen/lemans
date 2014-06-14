@@ -34,19 +34,26 @@ ul {
 
 
 .position-map {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-wrap: nowrap;
 	flex-wrap: nowrap;
+	-webkit-flex-direction: row;
 	flex-direction: row;
 	width: 100%;
 }
 
 .position-map .lap {
 	border-left: 1px solid #5c6873;
+	-webkit-flex-grow: 1;
 	flex-grow: 1;
 	text-align: center;
 	padding: 0 5px;
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-direction: column;
 	flex-direction: column;
+	-webkit-align-items: center;
 	align-items: center;
 }
 
