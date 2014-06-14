@@ -1,10 +1,26 @@
 window.widget = window.widget || {};
 window.widget["positionMap"] = (function() {
 	var template;
-
+	var initScroll = true;
 	var init = function() {
-
+		$("#map").scroll(function(e) {
+			setShadows();
+		});
 	};
+
+	function setShadows() {
+		var max = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
+		
+		$(".map-wrapper").removeClass("show-shadow-before");
+		$(".map-wrapper").removeClass("show-shadow-after");
+		if($("#map").scrollLeft() > 0) {
+			$(".map-wrapper").addClass("show-shadow-before");
+		}
+		if($("#map").scrollLeft() < max) {
+			$(".map-wrapper").addClass("show-shadow-after");		
+		}
+	}
+
 
 	var bind = function(data) {
 		var filtered = _.filter(data.cars, function(x) { return x.driverStatus == 2 || x.driverStatus == 4; });
@@ -46,8 +62,12 @@ window.widget["positionMap"] = (function() {
 //			</div>
 		
 
-		$("#map").html(html);
+		$("#map .map-content").html(html);
 
+		if(initScroll) {
+			initScroll = false;
+			setShadows();
+		}
 	}
 
 	return {
