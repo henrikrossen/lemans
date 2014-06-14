@@ -10,7 +10,6 @@ window.widget["positionMap"] = (function() {
 
 	function setShadows() {
 		var max = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
-		
 		$(".map-wrapper").removeClass("show-shadow-before");
 		$(".map-wrapper").removeClass("show-shadow-after");
 		if(max > 0) {
@@ -25,7 +24,7 @@ window.widget["positionMap"] = (function() {
 
 
 	var bind = function(data) {
-		var filtered = _.filter(data.cars, function(x) { return x.driverStatus == 2 || x.driverStatus == 4; });
+		var filtered = _.filter(data.cars, function(x) { return x.driverStatus == 2 || x.driverStatus == 4 || x.driverStatus == 3 });
 
 
 		var a = _.groupBy(filtered, function(x) { return x.laps});

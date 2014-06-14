@@ -198,3 +198,30 @@ label {
 	flex-grow: 1;
 }
 
+#progress {
+	height: 30px;
+	display: -webkit-flex;
+	display: flex;
+}
+
+#progress .hour {
+	width: 30px;
+	margin-left: 1px;
+	background-color: #424c58;
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
+	color: #2b323c;
+	text-align: center;
+	line-height: 30px;
+	overflow: hidden;
+}
+
+@media all and (max-width: 600px) {
+	#progress .hour {
+		color: transparent;
+	}
+}
+
+#progress .hour:first-child {
+	margin-left: 0;
+}
