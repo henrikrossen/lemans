@@ -198,6 +198,12 @@ label {
 	flex-grow: 1;
 }
 
+.position-map .gap {
+	color: #5c6873;
+	font-size: 80%;
+	opacity: 0.5;
+}
+
 #progress {
 	height: 30px;
 	display: -webkit-flex;
