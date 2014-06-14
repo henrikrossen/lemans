@@ -6,8 +6,7 @@
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.0/hogan.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
 
     <script src="/javascripts/carsinfo-widget.js"></script>
     <script src="/javascripts/weatherinfo-widget.js"></script>
@@ -32,7 +31,7 @@
 			$.getJSON( url, function( data ) {
 				window.widget.trackinfo.bind(data.track);
 				window.widget.weatherinfo.bind(data.track.weather);
-				window.widget.carsinfo.bind(data.cars);
+				window.widget.carsinfo.bind(data);
 			});
 		};
 
@@ -54,11 +53,13 @@
   <body>
   	<!--<div id="trackInfo" class="row"><h2>Track info loading...</h2></div>-->
   	<!--<div id="weatherInfo" class="row"><h2>Weather info loading...</h2></div>-->
-  	<div id="carInfo" class="row"><h2>Car info loading...</h2></div>
+  	
+  	<div id="carInfo" class="row">
+  		<h2>Car info loading...</h2>
+  		<%- include widget-carsinfo.ejs %>
+  	</div>
   	   
-    <!--<p>Welcome to <%= title %></p>-->
-
-    <%- include widget-position-map.ejs %>
+    <%- include widget-position-map.ejs %>    
   </body>
 </html>
 
