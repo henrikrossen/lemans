@@ -75,20 +75,20 @@
   <%- include widget-position-map.ejs %>    
 
     <div class="infoBoxContainer container-fluid">
-    	<div id="trackInfo" class="row">
+    	<div id="trackInfo" class="row info-widget">
     		<h1>Track info loading...</h1>
     		<%- include widget-trackinfo.ejs %>
   	   </div>
 
-      <div id="weatherforecast" class="row">
-          <h1>Weather forecast loading...</h1>
-          <%- include widget-weatherforecast.ejs %>
+      <div id="weatherInfo" class="row info-widget">
+        <h1>Weather info loading...</h1>
+        <%- include widget-weatherinfo.ejs %>
       </div>
 
-    	<div id="weatherInfo" class="row">
-    		<h1>Weather info loading...</h1>
-    		<%- include widget-weatherinfo.ejs %>
-  	 </div>
+      <div id="weatherforecast" class="row info-widget">
+          <h1>Forecast loading...</h1>
+          <%- include widget-weatherforecast.ejs %>
+      </div>
     </div>
 
     <div class="container-fluid">

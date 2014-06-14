@@ -3,21 +3,21 @@
 <h1>Cars</h1>
 
 {{#cars}} 
-<ul class="car-list list">
-    <li><strong>Pos {{position this}}</strong></li>
-    <li><strong>{{team}}</strong></li>
-    <li><strong>{{pilotName pilot}}</strong></li>
-    <li><img width="66" height="100" alt="{{pilotName pilot}}" title="{{pilotName pilot}}" src="{{pilotPicture pilot}}"></li>
-    <li>Car: {{carDescription this}}</li>
-    <li>Average Speed: {{averageSpeed}}</li>
-    <li>Last Time: {{lastTimeInMiliseconds}}</li>
-    <li>Best Time: {{bestTimeInMiliseconds}}</li>
-    <li>Laps: {{laps}}</li>
-    <li>Time Difference: {{timeDifference}}</li>
-    <li>Pits: {{pits}}</li>
-    <li>State: {{driverStatusText this}}</li>
-    <li>Tires: {{tires}}</li>
-</ul>
+    <ul class="car-list list">
+        <li><strong>Pos. {{position this}}</strong></li>
+        <li><strong>{{team}}</strong></li>
+        <li><strong>{{pilotName pilot}}</strong></li>
+        <li><img width="66" height="100" alt="{{pilotName pilot}}" title="{{pilotName pilot}}" src="{{pilotPicture pilot}}"></li>
+        <li>Car: {{carDescription this}}</li>
+        <li>Average Speed: {{averageSpeed}}</li>
+        <li>Last Time: {{lastTimeInMiliseconds}}</li>
+        <li>Best Time: {{bestTimeInMiliseconds}}</li>
+        <li>Laps: {{laps}}</li>
+        <li>Time Difference: {{timeDifference}}</li>
+        <li>Pits: {{pits}}</li>
+        <li>State: {{driverStatusText this}}</li>
+        <li>Tires: {{tires}}</li>
+    </ul>
 {{/cars}} 
 
 </script>

@@ -47,7 +47,7 @@ label {
 	font-weight: 300;
 }
 
-#trackInfo {
+.info-widget {
 	font-size: 0.9em;
 	color: #3494f4;
 	font-weight: normal;
