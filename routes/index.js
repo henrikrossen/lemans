@@ -15,5 +15,4 @@ router.get('/version', function(req, res) {
     res.send(ticks.toString());
 })
 
-
 module.exports = router;

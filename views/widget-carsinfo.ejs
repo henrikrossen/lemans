@@ -1,11 +1,13 @@
 <script id="cars-list-template" type="text/x-handlebars-template">
 
+<h1>Cars</h1>
+
 {{#cars}} 
 <ul class="car-list list">
     <li><strong>Pos {{position this}}</strong></li>
     <li><strong>{{team}}</strong></li>
     <li><strong>{{pilotName pilot}}</strong></li>
-    <li><img width="66" height="100" alt="{{pilotName pilot}}" src="{{pilotPicture pilot}}"></li>
+    <li><img width="66" height="100" alt="{{pilotName pilot}}" title="{{pilotName pilot}}" src="{{pilotPicture pilot}}"></li>
     <li>Car: {{carDescription this}}</li>
     <li>Average Speed: {{averageSpeed}}</li>
     <li>Last Time: {{lastTimeInMiliseconds}}</li>

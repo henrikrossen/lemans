@@ -1,11 +1,25 @@
 <script id="track-template" type="text/x-handlebars-template">
+	<h1>Track</h1>
 
-	<ul class="track list">
-		<li>Local Time: {{localTime}}</li>
-	    <li>Safety Car: {{safetyCarText safetyCar}}</li>
-	    <li>Qualify: {{qualifyText qualify}}</li>
-	    <li>Elapsed Time: {{elapsedTime}}</li>
-	    <li>Remaining Time: {{remainingTime}}</li>
-	</ul>
+	<div>
+		<label>Local Time:</label>
+		<span>{{localTime}}</span>
+	</div>
+	<div>
+		<label>Safety Car:</label>
+		<span>{{safetyCarText safetyCar}}</span>
+	</div>
+	<div>
+		<label>Qualify:</label>
+		<span>{{qualifyText qualify}}</span>
+	</div>
+	<div>
+		<label>Elapsed Time:</label>
+		<span>{{elapsedTime}}</span>
+	</div>
+	<div>
+		<label>Remaining Time:</label>
+		<span>{{remainingTime}}</span>
+	</div>
 
 </script>

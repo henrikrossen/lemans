@@ -15,26 +15,36 @@
     <script src="/javascripts/carsinfo-widget.js"></script>
     <script src="/javascripts/weatherinfo-widget.js"></script>
     <script src="/javascripts/trackinfo-widget.js"></script>
+    <script src="/javascripts/weatherforecast-widget.js"></script>
     <script src="/javascripts/position-map.js"></script>
 
     <script>
 	    $(function() {
-  			loadData();
   			window.widget.trackinfo.init();
   			window.widget.weatherinfo.init();
   			window.widget.carsinfo.init();
   			window.widget.positionMap.init();
+        window.widget.weatherforecast.init();
+
+        loadData();
+        loadWeatherforecast();
 
   			setInterval(function() {	
   				loadData();
+          loadWeatherforecast();
   		    }, 10000);
 	    });
+
+      function loadWeatherforecast() {
+        $.getJSON("/weatherforecast", function( data ) {
+          window.widget.weatherforecast.bind(data);
+        });
+      }
 
 	    function loadData() {
 			 checkVersion();
 
-			var url = "/data";
-			$.getJSON( url, function( data ) {
+			$.getJSON("/data", function( data ) {
 				window.widget.trackinfo.bind(data.track);
 				window.widget.weatherinfo.bind(data.track.weather);
 				window.widget.carsinfo.bind(data);
@@ -60,20 +70,30 @@
   <body>
     <%- include widget-position-map.ejs %>    
 
-  	<div id="trackInfo" class="row">
-  		<h2>Track info loading...</h2>
-  		<%- include widget-trackinfo.ejs %>
-	</div>
+    <div class="infoBoxContainer container-fluid">
+    	<div id="trackInfo" class="row">
+    		<h1>Track info loading...</h1>
+    		<%- include widget-trackinfo.ejs %>
+  	   </div>
 
-  	<div id="weatherInfo" class="row">
-  		<h2>Weather info loading...</h2>
-  		<%- include widget-weatherinfo.ejs %>
-	</div>
-  	
-  	<div id="carInfo" class="row">
-  		<h2>Car info loading...</h2>
-  		<%- include widget-carsinfo.ejs %>
-  	</div>
+      <div id="weatherforecast" class="row">
+          <h1>Weather forecast loading...</h1>
+          <%- include widget-weatherforecast.ejs %>
+      </div>
+
+    	<div id="weatherInfo" class="row">
+    		<h1>Weather info loading...</h1>
+    		<%- include widget-weatherinfo.ejs %>
+  	 </div>
+    </div>
+
+    <div class="container-fluid">
+    	<div id="carInfo" class="row">
+    		<h1>Car info loading...</h1>
+    		<%- include widget-carsinfo.ejs %>
+    	</div>
+    </div>
+
   </body>
 </html>
 

@@ -33,12 +33,24 @@ ul {
  }
 
 .list {
-	 border: 1px solid #000;
 	 margin: 1em;
-	 width: 16em;
+	 width: 20em;
 	 padding: 5px;
 	 list-style: none;
 	 font-size: 0.8em;
+	 text-transform: uppercase;
+	 color: #8FA0B2;
+}
+
+label {
+	color: #8FA0B2;
+	font-weight: 300;
+}
+
+#trackInfo {
+	font-size: 0.9em;
+	color: #3494f4;
+	font-weight: normal;
 }
 
 .position-map {
@@ -173,3 +185,16 @@ ul {
 .position-map .lap:first-child {
 	border-left: 0;
 }
+
+.infoBoxContainer {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+
+.infoBoxContainer .row {
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
+}
+
