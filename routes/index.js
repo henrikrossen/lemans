@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
 
     res.render('index', 
       { 
-        title: 'Le Mans - Dashboard' 
+        title: 'Le Mans 24 Hours - Dashboard' 
       });
 });
 

@@ -3,21 +3,84 @@
 <h1>Cars</h1>
 
 {{#cars}} 
-    <ul class="car-list list">
-        <li><strong>Pos. {{position this}}</strong></li>
-        <li><strong>{{team}}</strong></li>
-        <li><strong>{{pilotName pilot}}</strong></li>
-        <li><img width="66" height="100" alt="{{pilotName pilot}}" title="{{pilotName pilot}}" src="{{pilotPicture pilot}}"></li>
-        <li>Car: {{carDescription this}}</li>
-        <li>Average Speed: {{averageSpeed}}</li>
-        <li>Last Time: {{lastTimeInMiliseconds}}</li>
-        <li>Best Time: {{bestTimeInMiliseconds}}</li>
-        <li>Laps: {{laps}}</li>
-        <li>Time Difference: {{timeDifference}}</li>
-        <li>Pits: {{pits}}</li>
-        <li>State: {{driverStatusText this}}</li>
-        <li>Tires: {{tires}}</li>
-    </ul>
+    <div class="car-list list">
+        <div>
+            <label>Position</label>
+            <span>{{position this}}</span>
+        </div>
+
+        <div>
+            <label>Team</label>
+            <span>{{team}}</span>
+        </div>
+
+        <div>
+            <label>Category</label>
+            <span>{{category}}</span>
+        </div>
+
+        <div>
+            <label>Pilot</label>
+            <span>{{pilotName pilot}}</span>
+        </div>
+
+        <div>
+            <label>Pilot Country</label>
+            <span>{{pilotCountry pilot}}</span>
+        </div>
+
+        <div>
+            <label>Car</label>
+            <span>{{carDescription this}}</span>
+        </div>
+
+        <img class="pilotPicture" width="66" height="100" alt="{{pilotName pilot}}" title="{{pilotName pilot}}" src="{{pilotPicture pilot}}">
+
+        <div>
+            <label>Average Speed</label>
+            <span>{{averageSpeed}}</span>
+        </div>
+
+        <div>
+            <label>Last Time</label>
+            <span>{{lastTimeInMiliseconds}}</span>
+        </div>
+
+        <div>
+            <label>Best Time</label>
+            <span>{{bestTimeInMiliseconds}}</span>
+        </div>
+
+        <div>
+            <label>Laps</label>
+            <span>{{laps}}</span>
+        </div>
+
+        <div>
+            <label>Time Difference</label>
+            <span>{{timeDifference}}</span>
+        </div>
+
+        <div>
+            <label>Last Time</label>
+            <span>{{lastTimeInMiliseconds}}</span>
+        </div>
+
+        <div>
+            <label>Pits</label>
+            <span>{{pits}}</span>
+        </div>
+
+        <div>
+            <label>State</label>
+            <span>{{driverStatusText this}}</span>
+        </div>
+
+        <div>
+            <label>Tires</label>
+            <span>{{tires}}</span>
+        </div>
+    </div>
 {{/cars}} 
 
 </script>

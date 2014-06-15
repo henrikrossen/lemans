@@ -25,15 +25,15 @@
   			window.widget.weatherinfo.init();
   			window.widget.carsinfo.init();
   			window.widget.positionMap.init();
-        window.widget.weatherforecast.init();
+        //window.widget.weatherforecast.init();
         window.widget.progress.init();
 
         loadData();
-        loadWeatherforecast();
+        //loadWeatherforecast();
 
   			setInterval(function() {	
   				loadData();
-          loadWeatherforecast();
+          //loadWeatherforecast();
   		    }, 10000);
 	    });
 
@@ -85,10 +85,10 @@
         <%- include widget-weatherinfo.ejs %>
       </div>
 
-      <div id="weatherforecast" class="row info-widget">
+      <!--<div id="weatherforecast" class="row info-widget">
           <h1>Forecast loading...</h1>
-          <%- include widget-weatherforecast.ejs %>
-      </div>
+           include widget-weatherforecast.ejs 
+      </div>-->
     </div>
 
     <div class="container-fluid">

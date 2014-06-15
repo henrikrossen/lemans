@@ -3,38 +3,40 @@
 	<h1>Weather</h1>
 
 	<div>
-		<label>Air Temp:</label>
-		<span>{{airTemp}}</span>
-	</div>
-
-	<div>
-		<label>Road Temp:</label>
-		<span>{{roadTemp}}</span>
-	</div>
-
-	<div>
-		<label>Humidity:</label>
-		<span>{{humidity}}</span>
-	</div>
-
-	<div>
-		<label>Air Preassure:</label>
-		<span>{{airPreassure}}</span>
-	</div>
-
-	<div>
-		<label>Wind Speed:</label>
-		<span>{{windSpeed}}</span>
-	</div>
-
-	<div>
-		<label>Wind Direction:</label>
-		<span>{{windDirection}}</span>
-	</div>
-	
-	<div>
 		<label>Weather Type:</label>
 		<span>{{weatherType}}</span>
 	</div>
 
+	<div>
+		<label>Air Temp:</label>
+		<span>{{airTemp}}°C</span>
+	</div>
+
+	<div>
+		<label>Road Temp:</label>
+		<span>{{roadTemp}}°C</span>
+	</div>
+
+	<div>
+		<label>Humidity:</label>
+		<span>{{humidity}}%</span>
+	</div>
+
+	<div>
+		<label>Air Preassure:</label>
+		<span>{{airPreassure}} hPa</span>
+	</div>
+
+	<div>
+		<label>Wind Speed:</label>
+		<span>{{windSpeed}} kph </span>
+	</div>
+
+	<!--<div>
+		<label>Wind Direction:</label>
+		<span>{{windDirection}}</span>
+	</div>-->
+
+	<img class="weatherIcon" src="{{weatherIconUrl}}" alt="{{weatherType}}" title="{{weatherType}}" />
+	
 </script>

@@ -32,6 +32,16 @@ window.widget["carsinfo"] = (function() {
 		  return pilotName; 
 		});
 
+		Handlebars.registerHelper('pilotCountry', function(pilot) {
+			var pilotCountry = "";
+			
+			if (pilot !== null) {
+				pilotCountry = pilot.country;
+			};
+
+		  return pilotCountry; 
+		});
+
 		Handlebars.registerHelper('pilotPicture', function(pilot) {
 			var pilotPicture = "http://live.fiawec.com/wpphpFichiers/1/pilote/143/Driver_Unknow_.png";
 						
