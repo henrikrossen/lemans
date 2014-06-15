@@ -77,7 +77,7 @@ window.widget["carsinfo"] = (function() {
 	    if (seconds < 10) {seconds = "0"+seconds;}
 	    if (miliseconds < 100) {miliseconds = "0"+miliseconds;}
 	    if (miliseconds < 10) {miliseconds = "0"+miliseconds;}
-	    var time = minutes + ':' + seconds + ':' + miliseconds;
+	    var time = minutes + ':' + seconds + '.' + miliseconds;
 	    return time;
 	}
 
