@@ -31,6 +31,10 @@ window.widget["trackinfo"] = (function() {
 		elapsedTimeInSeconds = data.elapsedTimeInSeconds;
 		remainingTimeInSeconds = data.remainingTimeInSeconds;
 			
+		Handlebars.registerHelper('formatLocalTime', function(time) {
+		  return moment(time).add(-2, 'hours').format('HH:mm');
+		});
+
 		$('#trackContainer').html(template(data));
 	}
 
