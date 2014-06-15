@@ -1,4 +1,4 @@
 lemans
 ======
 
-#DWOdense special: Le Mans Hackathon 2014
+DWOdense special: Le Mans Hackathon 2014
