@@ -134,7 +134,7 @@ window.widget["positionMap"] = (function() {
 		el.css("z-index", "1000");
 
 		var b = driverElement[0].getBoundingClientRect();
-		var maxLeft = $(document).width() - 5 - 200;
+		var maxLeft = $(document).width() - 5 - 260;
 		console.log(maxLeft)
 		console.log(a.left + el.width())
 		if(a.left > maxLeft) {
