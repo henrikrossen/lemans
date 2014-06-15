@@ -60,7 +60,25 @@ window.widget["carsinfo"] = (function() {
 		  return car.carBrand + " " + car.carName;
 		});
 
+		Handlebars.registerHelper('time', function(time) {
+		  return milisecondsToFormattedTime(time);
+		});
+
 		$('#carInfo').html(template(data));
+	}
+
+	function milisecondsToFormattedTime(val) {
+	    var mil_num = parseInt(val, 10); // don't forget the second param
+
+	    var minutes   = Math.floor(mil_num / 1000 / 60);
+	    var seconds = Math.floor((mil_num - (minutes * 1000 * 60)) / 1000);
+	    var miliseconds = mil_num - (minutes * 1000 * 60) - (seconds * 1000);
+
+	    if (seconds < 10) {seconds = "0"+seconds;}
+	    if (miliseconds < 100) {miliseconds = "0"+miliseconds;}
+	    if (miliseconds < 10) {miliseconds = "0"+miliseconds;}
+	    var time = minutes + ':' + seconds + ':' + miliseconds;
+	    return time;
 	}
 
 	return {
