@@ -14,6 +14,7 @@
 
     <script src="/javascripts/carsinfo-widget.js"></script>
     <script src="/javascripts/weatherinfo-widget.js"></script>
+    <script src="/javascripts/weathericon-widget.js"></script>
     <script src="/javascripts/trackinfo-widget.js"></script>
     <script src="/javascripts/weatherforecast-widget.js"></script>
     <script src="/javascripts/position-map.js"></script>
@@ -23,6 +24,7 @@
 	    $(function() {
   			window.widget.trackinfo.init();
   			window.widget.weatherinfo.init();
+        window.widget.weathericon.init();
   			window.widget.carsinfo.init();
   			window.widget.positionMap.init();
         //window.widget.weatherforecast.init();
@@ -49,6 +51,7 @@
 			$.getJSON("/data", function( data ) {
 				window.widget.trackinfo.bind(data.track);
 				window.widget.weatherinfo.bind(data.track.weather);
+        window.widget.weathericon.bind(data.track.weather);
 				window.widget.carsinfo.bind(data);
 				window.widget.positionMap.bind(data);
         window.widget.progress.bind(data);
@@ -80,6 +83,8 @@
   	   </div>
  
         <%- include widget-weatherinfo.ejs %>
+
+        <%- include widget-weathericon.ejs %>
 
         <!--<div id="weatherforecast" class="row info-widget">
           <h1>Forecast loading...</h1>
