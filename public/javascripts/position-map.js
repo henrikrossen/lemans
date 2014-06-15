@@ -22,10 +22,8 @@ window.widget["positionMap"] = (function() {
 		}
 	}
 
-
 	var bind = function(data) {
 		var filtered = _.filter(data.cars, function(x) { return x.driverStatus == 2 || x.driverStatus == 4 || x.driverStatus == 3 });
-
 
 		var a = _.groupBy(filtered, function(x) { return x.laps});
 		var html = "";
@@ -34,9 +32,10 @@ window.widget["positionMap"] = (function() {
 			html += lapHtml.replace("%lap%", lap[0].laps);
 
 			_.each(lap, function(car) {
-				var carHtml = "%gap%<div class='driver %class%'>%car%</div>";
+				var carHtml = "%gap%<div class='driver %class%'><span>%car%</span><div class='driverInfo' data-car='%car%'>%car%</div></div>";
 				var category = "";
 				var gap = "";
+
 				if(car.category != null) {
 					category = car.category;
 				}
@@ -47,8 +46,7 @@ window.widget["positionMap"] = (function() {
 				}
 
 				if(car.timeDifference.indexOf("Lap") < 0 && car.timeDifference != "") {
-					
-					var t = car.timeDifference; 
+									var t = car.timeDifference; 
 					var minutes = 0;
 					var seconds = 0;
 					if(t.indexOf(":") >= 0) {
@@ -67,9 +65,9 @@ window.widget["positionMap"] = (function() {
 				}
 
 				carHtml = carHtml.replace("%gap%", gap);
-				carHtml = carHtml.replace("%car%", car.number);
+				carHtml = carHtml.split("%car%").join(car.number);
 				carHtml = carHtml.replace("%class%", cls);
-				
+
 				html += carHtml;
 			})
 
@@ -84,7 +82,20 @@ window.widget["positionMap"] = (function() {
 //			</div>
 		
 
-		$("#map .map-content").html(html);
+		var container = $("#map .map-content");
+		container.html(html);
+
+		//container.on('mouseenter', '.driver', function() {
+		//	var driverInfo = $(this).find(".driverInfo");
+		//	var car = driverInfo.data("car");
+		//	
+		//	var info = $("#carInfo").find("[data-car='" + car + "']");
+		//	driverInfo.html(info);
+		//});
+
+		//container.on('mouseleave', '.driver', function() {
+		//	var car = $(this).find(".driverInfo").data("car");			
+		//});
 
 		if(initScroll) {
 			initScroll = false;

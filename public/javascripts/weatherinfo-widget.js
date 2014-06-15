@@ -9,7 +9,7 @@ window.widget["weatherinfo"] = (function() {
 	};
 
 	var bind = function(data) {
-		$('#weatherInfo').html(template(data));
+		$('#weatherContainer').html(template(data));
 	}
 
 	return {

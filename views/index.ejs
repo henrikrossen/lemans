@@ -32,7 +32,7 @@
         //loadWeatherforecast();
 
   			setInterval(function() {	
-  				loadData();
+  				//loadData();
           //loadWeatherforecast();
   		    }, 10000);
 	    });
@@ -71,25 +71,23 @@
   </head>
 
   <body>
-  <%- include widget-progress.ejs %>  
-  <%- include widget-position-map.ejs %>    
+    <%- include widget-progress.ejs %>  
 
     <div class="infoBoxContainer container-fluid">
     	<div id="trackInfo" class="row info-widget">
     		<h1>Track info loading...</h1>
     		<%- include widget-trackinfo.ejs %>
   	   </div>
-
-      <div id="weatherInfo" class="row info-widget">
-        <h1>Weather info loading...</h1>
+ 
         <%- include widget-weatherinfo.ejs %>
-      </div>
 
-      <!--<div id="weatherforecast" class="row info-widget">
+        <!--<div id="weatherforecast" class="row info-widget">
           <h1>Forecast loading...</h1>
            include widget-weatherforecast.ejs 
       </div>-->
     </div>
+  
+    <%- include widget-position-map.ejs %>    
 
     <div class="container-fluid">
     	<div id="carInfo" class="row">
