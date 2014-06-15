@@ -1,28 +1,36 @@
+<div id="trackContainer" class="row">
+	<h1>Track info loading...</h1>
+</div>
+
 <script id="track-template" type="text/x-handlebars-template">
-	<h1>Track</h1>
 
-	<div>
-		<label>Elapsed Time:</label>
-		<span id="elapsedTime">{{elapsedTime}}</span>
+	<div id="trackInfo" class="info-widget">
+		<h1>Track</h1>
+
+		<div>
+			<label>Elapsed Time:</label>
+			<span id="elapsedTime">{{elapsedTime}}</span>
+		</div>
+
+		<div>
+			<label>Remaining Time:</label>
+			<span id="remainingTime">{{remainingTime}}</span>
+		</div>
+
+		<div>
+			<label>Local Time:</label>
+			<span>{{localTime}}</span>
+		</div>
+
+		<div>
+			<label>Safety Car:</label>
+			<span>{{safetyCarText safetyCar}}</span>
+		</div>
+		
+		<div>
+			<label>Qualify:</label>
+			<span>{{qualifyText qualify}}</span>
+		</div>
 	</div>
 
-	<div>
-		<label>Remaining Time:</label>
-		<span id="remainingTime">{{remainingTime}}</span>
-	</div>
-
-	<div>
-		<label>Local Time:</label>
-		<span>{{localTime}}</span>
-	</div>
-
-	<div>
-		<label>Safety Car:</label>
-		<span>{{safetyCarText safetyCar}}</span>
-	</div>
-	
-	<div>
-		<label>Qualify:</label>
-		<span>{{qualifyText qualify}}</span>
-	</div>
 </script>

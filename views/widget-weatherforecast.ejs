@@ -1,56 +1,62 @@
+<div id="weatherforeContainer" class="row info-widget">
+	<h1>Forecast loading...</h1>
+</div>
+
 <script id="weatherforecast-template" type="text/x-handlebars-template">
 
-	<h1>Weather Forecast</h1>
+	<div id="weatherforecast" class="info-widget">
+		<h1>Weather Forecast</h1>
 
-	<div>
-		<label>Summary:</label>
-		<span>{{summary}}</span>
-	</div>
+		<div>
+			<label>Summary:</label>
+			<span>{{summary}}</span>
+		</div>
 
-	<div>
-		<label>Temperature:</label>
-		<span>{{temperature}}°C</span>
-	</div>
-<!--
-	<div>
-		<label>Dew Point:</label>
-		<span>{{dewPoint}}</span>
-	</div>
--->
-	<div>
-		<label>Humidity:</label>
-		<span>{{humidity}}</span>
-	</div>
+		<div>
+			<label>Temperature:</label>
+			<span>{{temperature}}°C</span>
+		</div>
+	<!--
+		<div>
+			<label>Dew Point:</label>
+			<span>{{dewPoint}}</span>
+		</div>
+	-->
+		<div>
+			<label>Humidity:</label>
+			<span>{{humidity}}</span>
+		</div>
 
-	<div>
-		<label>Wind Speed:</label>
-		<span>{{windSpeed}}</span>
-	</div>
+		<div>
+			<label>Wind Speed:</label>
+			<span>{{windSpeed}}</span>
+		</div>
 
-	<div>
-		<label>Visibility:</label>
-		<span>{{visibility}}</span>
-	</div>
-<!--
-	<div>
-		<label>Wind Bearing:</label>
-		<span>{{windBearing}}</span>
-	</div>
--->
-<!--
-	<div>
-		<label>Cloud Cover:</label>
-		<span>{{cloudCover}}</span>
-	</div>
--->
-	<div>
-		<label>Pressure:</label>
-		<span>{{pressure}}</span>
-	</div>
+		<div>
+			<label>Visibility:</label>
+			<span>{{visibility}}</span>
+		</div>
+	<!--
+		<div>
+			<label>Wind Bearing:</label>
+			<span>{{windBearing}}</span>
+		</div>
+	-->
+	<!--
+		<div>
+			<label>Cloud Cover:</label>
+			<span>{{cloudCover}}</span>
+		</div>
+	-->
+		<div>
+			<label>Pressure:</label>
+			<span>{{pressure}}</span>
+		</div>
 
-	<div>
-		<label>Ozone:</label>
-		<span>{{ozone}}</span>
+		<div>
+			<label>Ozone:</label>
+			<span>{{ozone}}</span>
+		</div>
 	</div>
-
+	
 </script>

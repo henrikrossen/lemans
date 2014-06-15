@@ -31,7 +31,7 @@ window.widget["trackinfo"] = (function() {
 		elapsedTimeInSeconds = data.elapsedTimeInSeconds;
 		remainingTimeInSeconds = data.remainingTimeInSeconds;
 			
-		$('#trackInfo').html(template(data));
+		$('#trackContainer').html(template(data));
 	}
 
 	return {
