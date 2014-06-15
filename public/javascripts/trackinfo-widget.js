@@ -5,17 +5,19 @@ window.widget["trackinfo"] = (function() {
 	var elapsedTimeInSeconds = 0;
 	var remainingTimeInSeconds = 0;
 
-	var init = function() {
+	var init = function(updateSeconds) {
 		var source = $("#track-template").html(); 
 		template = Handlebars.compile(source); 
 
-		setInterval(function() {	
-			elapsedTimeInSeconds = elapsedTimeInSeconds + 1;
-			$("#elapsedTime").html(secondsToFormattedTime(elapsedTimeInSeconds));
+		if (updateSeconds) {
+			setInterval(function() {	
+				elapsedTimeInSeconds = elapsedTimeInSeconds + 1;
+				$("#elapsedTime").html(secondsToFormattedTime(elapsedTimeInSeconds));
 
-			remainingTimeInSeconds = remainingTimeInSeconds - 1;
-			$("#remainingTime").html(secondsToFormattedTime(remainingTimeInSeconds));
-		}, 1000);
+				remainingTimeInSeconds = remainingTimeInSeconds - 1;
+				$("#remainingTime").html(secondsToFormattedTime(remainingTimeInSeconds));
+			}, 1000);	
+		};
 	};
 
 	var bind = function(data) {
@@ -32,7 +34,7 @@ window.widget["trackinfo"] = (function() {
 		remainingTimeInSeconds = data.remainingTimeInSeconds;
 			
 		Handlebars.registerHelper('formatLocalTime', function(time) {
-		  return moment(time).add(-2, 'hours').format('HH:mm');
+		  return moment(time).add(-2, 'hours').format('HH : mm');
 		});
 
 		$('#trackContainer').html(template(data));

@@ -21,8 +21,10 @@
     <script src="/javascripts/progress.js"></script>
 
     <script>
+      var liveUpdateData = false;
+
 	    $(function() {
-  			window.widget.trackinfo.init();
+  			window.widget.trackinfo.init(liveUpdateData);
   			window.widget.weatherinfo.init();
         window.widget.weathericon.init();
   			window.widget.carsinfo.init();
@@ -30,29 +32,29 @@
         //window.widget.weatherforecast.init();
         window.widget.progress.init();
 
-        loadData();
-        //loadWeatherforecast();
-
-  			setInterval(function() {	
-  				loadData();
+        if (liveUpdateData) {
+          loadData();
           //loadWeatherforecast();
-  		    }, 10000);
 
-        $("#historySlider").change(function(){
-            console.log(this.value);
-            loadHistory(this.value);
+          setInterval(function() {
+            loadData();
+            //loadWeatherforecast();
+            }, 10000);
+        } else {
+          loadHistory(1);
+        };
+
+        $("#historySlider").on("change", function( event ) { 
+          loadHistory(this.value);  
         });
 	    });
 
       function loadHistory(index) {
-        $.ajax({
-          url:'data/loadhistory',
-          type:'POST',
-          data: { "index": index },
-          dataType: 'json',
-          success: function( json ) {
-              console.log(json);
-            }
+        $.getJSON("/data/loadhistory?index=" + index, function( data ) {
+
+          if (data) {
+            bindWidgets(data);
+          };
         });
       }
 
@@ -66,14 +68,18 @@
 			 checkVersion();
 
 			$.getJSON("/data", function( data ) {
-				window.widget.trackinfo.bind(data.track);
-				window.widget.weatherinfo.bind(data.track.weather);
-        window.widget.weathericon.bind(data.track.weather);
-				window.widget.carsinfo.bind(data);
-				window.widget.positionMap.bind(data);
-        window.widget.progress.bind(data);
+				bindWidgets(data);
 			});
 		};
+
+    function bindWidgets(data) {
+      window.widget.trackinfo.bind(data.track);
+      window.widget.weatherinfo.bind(data.track.weather);
+      window.widget.weathericon.bind(data.track.weather);
+      window.widget.carsinfo.bind(data);
+      window.widget.positionMap.bind(data);
+      window.widget.progress.bind(data);
+    }
 
     	var lastVersion = null;
 	    function checkVersion() {
@@ -91,7 +97,7 @@
   </head>
 
   <body>
-    <input type="range" id="historySlider" min="1" max="24" value="1" step="1" />
+    <input type="range" id="historySlider" name="slider" min="1" max="24" value="1" step="1" />
 
     <%- include widget-progress.ejs %>  
     <%- include widget-position-map.ejs %>    

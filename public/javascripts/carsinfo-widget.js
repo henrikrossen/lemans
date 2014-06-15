@@ -3,7 +3,7 @@ window.widget["carsinfo"] = (function() {
 
 	var driverStatusTypes = [
 		"Unknown",
-	    "Retired",
+		"Retired",
 		"Run",
 		"Out",
 		"Pit"];
@@ -19,7 +19,7 @@ window.widget["carsinfo"] = (function() {
 		var car = data;
 		
 		Handlebars.registerHelper('position', function(car) {
-		  return data.cars.indexOf(car) + 1;
+			return data.cars.indexOf(car) + 1;
 		});
 
 		Handlebars.registerHelper('pilotName', function(pilot) {
@@ -29,7 +29,7 @@ window.widget["carsinfo"] = (function() {
 				pilotName = pilot.firstName + " " + pilot.lastName;
 			};
 
-		  return pilotName; 
+			return pilotName; 
 		});
 
 		Handlebars.registerHelper('pilotCountry', function(pilot) {
@@ -39,7 +39,7 @@ window.widget["carsinfo"] = (function() {
 				pilotCountry = pilot.country;
 			};
 
-		  return pilotCountry; 
+			return pilotCountry; 
 		});
 
 		Handlebars.registerHelper('pilotPicture', function(pilot) {
@@ -49,36 +49,36 @@ window.widget["carsinfo"] = (function() {
 				pilotPicture = pilot.picture;
 			};
 			
-		  	return pilotPicture;
+				return pilotPicture;
 		});
 
 		Handlebars.registerHelper('driverStatusText', function(car) {
-		  return driverStatusTypes[car.driverStatus];
+			return driverStatusTypes[car.driverStatus];
 		});
 
 		Handlebars.registerHelper('carDescription', function(car) {
-		  return car.carBrand + " " + car.carName;
+			return car.carBrand + " " + car.carName;
 		});
 
 		Handlebars.registerHelper('time', function(time) {
-		  return milisecondsToFormattedTime(time);
+			return milisecondsToFormattedTime(time);
 		});
 
 		$('#carInfo').html(template(data));
 	}
 
 	function milisecondsToFormattedTime(val) {
-	    var mil_num = parseInt(val, 10); // don't forget the second param
+			var mil_num = parseInt(val, 10); // don't forget the second param
 
-	    var minutes   = Math.floor(mil_num / 1000 / 60);
-	    var seconds = Math.floor((mil_num - (minutes * 1000 * 60)) / 1000);
-	    var miliseconds = mil_num - (minutes * 1000 * 60) - (seconds * 1000);
+			var minutes   = Math.floor(mil_num / 1000 / 60);
+			var seconds = Math.floor((mil_num - (minutes * 1000 * 60)) / 1000);
+			var miliseconds = mil_num - (minutes * 1000 * 60) - (seconds * 1000);
 
-	    if (seconds < 10) {seconds = "0"+seconds;}
-	    if (miliseconds < 100) {miliseconds = "0"+miliseconds;}
-	    if (miliseconds < 10) {miliseconds = "0"+miliseconds;}
-	    var time = minutes + ':' + seconds + '.' + miliseconds;
-	    return time;
+			if (seconds < 10) {seconds = "0"+seconds;}
+			if (miliseconds < 100) {miliseconds = "0"+miliseconds;}
+			if (miliseconds < 10) {miliseconds = "0"+miliseconds;}
+			var time = minutes + ':' + seconds + '.' + miliseconds;
+			return time;
 	}
 
 	return {
