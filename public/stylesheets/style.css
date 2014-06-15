@@ -31,10 +31,6 @@ label {
     display: none;
 }
 
-.driver span:hover + .driverInfo {
-    display: block;
-}
-
 .weatherIcon {
 	width: 256px;
 	height: 256px;
@@ -183,6 +179,7 @@ label {
 	margin: 5px 0;
 	color: rgba(255,255,255,0.6);
 	border: 4px solid rgba(255,255,0,1);
+	cursor: pointer;
 }
 
 .driver.lm-p1 {
@@ -269,4 +266,11 @@ label {
 
 #progress .hour:first-child {
 	margin-left: 0;
+}
+
+.popup {
+	background-color: #424c58;
+	width: 200px;
+	border-radius: 5px;
+	padding: 5px;
 }
