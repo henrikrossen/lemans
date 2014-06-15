@@ -2,6 +2,7 @@ window.widget = window.widget || {};
 window.widget["weathericon"] = (function() {
 
 	var template;
+	var currentWeatherType;
 
 	var init = function() {
 		var source = $("#weathericon-template").html(); 
@@ -9,7 +10,11 @@ window.widget["weathericon"] = (function() {
 	};
 
 	var bind = function(data) {
-		$('#weatherIconContainer').html(template(data));
+
+		if (currentWeatherType != data.weatherType) {
+			$('#weatherIconContainer').html(template(data));
+			currentWeatherType = data.weatherType;
+		};
 	}
 
 	return {
