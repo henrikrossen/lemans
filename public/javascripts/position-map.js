@@ -23,6 +23,9 @@ window.widget["positionMap"] = (function() {
 	}
 
 	var bind = function(data) {
+		var max = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
+		var scrollToRight = $("#map").scrollLeft() == max;
+
 		var filtered = _.filter(data.cars, function(x) { return x.driverStatus == 2 || x.driverStatus == 4 || x.driverStatus == 3 });
 
 		var a = _.groupBy(filtered, function(x) { return x.laps});
@@ -96,9 +99,15 @@ window.widget["positionMap"] = (function() {
 		//container.on('mouseleave', '.driver', function() {
 		//	var car = $(this).find(".driverInfo").data("car");			
 		//});
+		var newMax = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
+		if(scrollToRight) {
+			$(".map-wrapper").scrollLeft(newMax);
+		}
 
 		if(initScroll) {
 			initScroll = false;
+			$(".map-wrapper").scrollLeft(1000000 + "px");
+			
 			setShadows();
 		}
 	}
