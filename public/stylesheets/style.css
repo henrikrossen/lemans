@@ -210,10 +210,18 @@ label {
 	justify-content: space-between;
 }
 
+@media all and (max-width: 600px) {
+
+	.infoBoxContainer {
+		display: block;
+	}
+}
+
 .infoBoxContainer .row {
 	-webkit-flex-grow: 1;
 	flex-grow: 1;
 }
+	
 
 .position-map .gap {
 	color: #5c6873;
