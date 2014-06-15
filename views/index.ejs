@@ -6,10 +6,10 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,700italic,500italic,900,900italic,400italic,300italic,100italic' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.0/hogan.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
 
     <script src="/javascripts/carsinfo-widget.js"></script>
@@ -37,7 +37,24 @@
   				loadData();
           //loadWeatherforecast();
   		    }, 10000);
+
+        $("#historySlider").change(function(){
+            console.log(this.value);
+            loadHistory(this.value);
+        });
 	    });
+
+      function loadHistory(index) {
+        $.ajax({
+          url:'data/loadhistory',
+          type:'POST',
+          data: { "index": index },
+          dataType: 'json',
+          success: function( json ) {
+              console.log(json);
+            }
+        });
+      }
 
       function loadWeatherforecast() {
         $.getJSON("/weatherforecast", function( data ) {
@@ -74,6 +91,8 @@
   </head>
 
   <body>
+    <input type="range" id="historySlider" min="1" max="24" value="1" step="1" />
+
     <%- include widget-progress.ejs %>  
     <%- include widget-position-map.ejs %>    
 
@@ -99,7 +118,6 @@
 
       ga('create', 'UA-4193296-10', 'lemans-dashboard.herokuapp.com');
       ga('send', 'pageview');
-
     </script>
   </body>
 </html>
