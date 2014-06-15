@@ -41,7 +41,7 @@
             //loadWeatherforecast();
             }, 10000);
         } else {
-          loadHistory(1);
+          loadHistory(24);
         };
 
         $("#historySlider").on("change", function( event ) { 
@@ -97,7 +97,7 @@
   </head>
 
   <body>
-    <input type="range" id="historySlider" name="slider" min="1" max="24" value="1" step="1" />
+    <input type="range" id="historySlider" name="slider" min="1" max="24" value="24" step="1" />
 
     <%- include widget-progress.ejs %>  
     <%- include widget-position-map.ejs %>    
