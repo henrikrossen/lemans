@@ -6,6 +6,18 @@ window.widget["positionMap"] = (function() {
 		$("#map").scroll(function(e) {
 			setShadows();
 		});
+
+		var container = $("#map .map-content");
+
+		$("body").click(function() {
+			$(".popup").remove();
+		})
+
+		container.on("click",".driver", function(e) {
+			e.stopPropagation();
+			$(".popup").hide();
+			displayDriverInfo($(this));
+		});
 	};
 
 	function setShadows() {
@@ -35,7 +47,7 @@ window.widget["positionMap"] = (function() {
 			html += lapHtml.replace("%lap%", lap[0].laps);
 
 			_.each(lap, function(car) {
-				var carHtml = "%gap%<div class='driver %class%'><span>%car%</span><div class='driverInfo' data-car='%car%'>%car%</div></div>";
+				var carHtml = "%gap%<div class='driver %class%' data-car='%car%'><span>%car%</span></div>";
 				var category = "";
 				var gap = "";
 
@@ -110,6 +122,32 @@ window.widget["positionMap"] = (function() {
 			
 			setShadows();
 		}
+	}
+
+	function displayDriverInfo(driverElement) {
+		var el = $("<div></div>");
+		el.css("position", "absolute");
+		el.addClass("popup")
+		var a = driverElement[0].getBoundingClientRect();
+		el.css("top", (a.top + driverElement.height()) + "px");
+		el.css("left", a.left + "px");
+		el.css("z-index", "1000");
+
+		var b = driverElement[0].getBoundingClientRect();
+		var maxLeft = $(document).width() - 5 - 200;
+		console.log(maxLeft)
+		console.log(a.left + el.width())
+		if(a.left > maxLeft) {
+			el.css("left", maxLeft + "px");
+		}
+
+		var info = $("#carInfo").find("[data-car='" + driverElement.data("car") + "']");
+		el.html(info.html());
+
+		$("body").append(el);
+
+
+
 	}
 
 	return {
