@@ -15,7 +15,7 @@ window.widget["progress"] = (function() {
 		var blocks = $("#progress .hour");
 		blocks.css("opacity", "0");
 
-		for(var x = 0;x <= hour; x++) {
+		for(var x = 0;x < hour; x++) {
 			$(blocks[x]).css("opacity", "1")
 		}
 
