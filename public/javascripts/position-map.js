@@ -101,12 +101,12 @@ window.widget["positionMap"] = (function() {
 		//});
 		var newMax = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
 		if(scrollToRight) {
-			$(".map-wrapper").scrollLeft(newMax);
+			$("#map").scrollLeft(newMax);
 		}
 
 		if(initScroll) {
 			initScroll = false;
-			$(".map-wrapper").scrollLeft(1000000 + "px");
+			$("#map").scrollLeft(1000000);
 			
 			setShadows();
 		}
