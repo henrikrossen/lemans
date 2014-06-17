@@ -37,7 +37,12 @@ window.widget["trackinfo"] = (function() {
 		  return moment(time).add(-2, 'hours').format('HH : mm');
 		});
 
-		$('#trackContainer').html(template(data));
+		$("#trackContainer").html(template(data));
+
+		$( "#carInfo" ).on("click", ".pilotSite", function(e) {
+	        var link = $(this).attr("href");
+	        if (!link) e.preventDefault();
+	    });
 	}
 
 	return {

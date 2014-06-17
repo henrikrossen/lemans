@@ -19,7 +19,7 @@ window.widget["progress"] = (function() {
 			$(blocks[x]).css("opacity", "1")
 		}
 
-		$(blocks[hour]).css("opacity", procentDone.toString())
+		$(blocks[hour]).css("opacity", procentDone.toString());
 	};
 
 	return {

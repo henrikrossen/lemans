@@ -21,7 +21,6 @@ router.get('/', function(req, res) {
   // Retrieve weather information from coordinates (Sydney, Australia)
   forecast.get([47.941667, 0.225], function(err, weather) {
     if(err) console.info(err);
-    //else console.info(weather);
 
     res.json(weather);
   });

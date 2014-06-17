@@ -16,13 +16,15 @@ router.get('/', function(req, res) {
 router.get('/loadhistory', function(req, res) {
     var index = req.query.index;
 
-    if (index < 1 || index > 24)
+    if (index < 0 || index > 24)
     {
 		res.json("");
+
     } else {
 	    var dir = path.join(process.cwd(), "public/dump", index + ".json");
 
 		fs.readFile(dir, 'utf8', function (err, data) {
+			
 		  if (err) {
 		    return console.log(err);
 		  }

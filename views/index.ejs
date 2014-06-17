@@ -21,6 +21,7 @@
     <script src="/javascripts/progress.js"></script>
 
     <script>
+      // Set flag to enable live data from API
       var liveUpdateData = false;
 
 	    $(function() {
@@ -44,9 +45,18 @@
           loadHistory(24);
         };
 
-        $("#historySlider").on("change", function( event ) { 
-          loadHistory(this.value);  
+        $("#historySlider").on("input", function( event ) { 
+          var $this = $(this);
+          var value = this.value;
+          clearTimeout($this.data('timer'));
+
+          $this.data('timer', setTimeout(function(){
+              $this.removeData('timer');
+
+              loadHistory(value);  
+          }, 200));
         });
+
 	    });
 
       function loadHistory(index) {
@@ -97,7 +107,7 @@
   </head>
 
   <body>
-    <input type="range" id="historySlider" name="slider" min="1" max="24" value="24" step="1" />
+    <input type="range" id="historySlider" name="slider" min="0" max="24" value="24" step="1" />
 
     <%- include widget-progress.ejs %>  
     <%- include widget-position-map.ejs %>    

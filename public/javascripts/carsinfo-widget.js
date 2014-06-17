@@ -23,33 +23,27 @@ window.widget["carsinfo"] = (function() {
 		});
 
 		Handlebars.registerHelper('pilotName', function(pilot) {
-			var pilotName = "";
-			
-			if (pilot !== null) {
-				pilotName = pilot.firstName + " " + pilot.lastName;
-			};
+			if (pilot === null) return "";
+			return pilot.firstName + " " + pilot.lastName;
+		});
 
-			return pilotName; 
+		Handlebars.registerHelper('pilotSite', function(pilot) {
+			if (pilot === null) return "#";
+			return pilot.site; 
 		});
 
 		Handlebars.registerHelper('pilotCountry', function(pilot) {
-			var pilotCountry = "";
-			
-			if (pilot !== null) {
-				pilotCountry = pilot.country;
-			};
-
-			return pilotCountry; 
+			if (pilot === null) return "";
+			return pilot.country;
 		});
 
 		Handlebars.registerHelper('pilotPicture', function(pilot) {
-			var pilotPicture = "http://live.fiawec.com/wpphpFichiers/1/pilote/143/Driver_Unknow_.png";
-						
-			if (pilot !== null) {
-				pilotPicture = pilot.picture;
-			};
-			
-				return pilotPicture;
+			var fallbackPilotPicture = "http://live.fiawec.com/wpphpFichiers/1/pilote/143/Driver_Unknow_.png";
+
+			if (pilot === null)  
+				return fallbackPilotPicture;
+
+			return pilot.picture;
 		});
 
 		Handlebars.registerHelper('driverStatusText', function(car) {
