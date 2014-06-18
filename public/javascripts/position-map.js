@@ -1,7 +1,9 @@
 window.widget = window.widget || {};
 window.widget["positionMap"] = (function() {
+
 	var template;
 	var initScroll = true;
+	
 	var init = function() {
 		$("#map").scroll(function(e) {
 			setShadows();
@@ -86,31 +88,13 @@ window.widget["positionMap"] = (function() {
 				html += carHtml;
 			})
 
-			html += "</div>";
-			
+			html += "</div>";			
 		});
 
-
-//<div class="driver">23</div>
-//			<div class="driver">
-//				23
-//			</div>
-		
 
 		var container = $("#map .map-content");
 		container.html(html);
 
-		//container.on('mouseenter', '.driver', function() {
-		//	var driverInfo = $(this).find(".driverInfo");
-		//	var car = driverInfo.data("car");
-		//	
-		//	var info = $("#carInfo").find("[data-car='" + car + "']");
-		//	driverInfo.html(info);
-		//});
-
-		//container.on('mouseleave', '.driver', function() {
-		//	var car = $(this).find(".driverInfo").data("car");			
-		//});
 		var newMax = $("#map .map-content")[0].scrollWidth - $("#map .map-content")[0].clientWidth;
 		if(scrollToRight) {
 			$("#map").scrollLeft(newMax);
@@ -128,6 +112,7 @@ window.widget["positionMap"] = (function() {
 		var el = $("<div></div>");
 		el.css("position", "absolute");
 		el.addClass("popup")
+
 		var a = driverElement[0].getBoundingClientRect();
 		el.css("top", (a.top + driverElement.height()) + "px");
 		el.css("left", a.left + "px");
@@ -135,8 +120,7 @@ window.widget["positionMap"] = (function() {
 
 		var b = driverElement[0].getBoundingClientRect();
 		var maxLeft = $(document).width() - 5 - 260;
-		console.log(maxLeft)
-		console.log(a.left + el.width())
+		
 		if(a.left > maxLeft) {
 			el.css("left", maxLeft + "px");
 		}
@@ -145,9 +129,6 @@ window.widget["positionMap"] = (function() {
 		el.html(info.html());
 
 		$("body").append(el);
-
-
-
 	}
 
 	return {

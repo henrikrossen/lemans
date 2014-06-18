@@ -22,16 +22,12 @@ window.widget["trackinfo"] = (function() {
 
 	var bind = function(data) {
 
+		elapsedTimeInSeconds = data.elapsedTimeInSeconds;
+		remainingTimeInSeconds = data.remainingTimeInSeconds;
+
 		Handlebars.registerHelper('safetyCarText', function(safetyCar) {
 		  return safetyCar ? "Yes" : "No";
 		});
-
-		Handlebars.registerHelper('qualifyText', function(qualify) {
-		  return qualify ? "Yes" : "No";
-		});
-
-		elapsedTimeInSeconds = data.elapsedTimeInSeconds;
-		remainingTimeInSeconds = data.remainingTimeInSeconds;
 			
 		Handlebars.registerHelper('formatLocalTime', function(time) {
 		  return moment(time).add(-2, 'hours').format('HH : mm');
@@ -45,21 +41,21 @@ window.widget["trackinfo"] = (function() {
 	    });
 	}
 
+	function secondsToFormattedTime(val) {
+	    var sec_num = parseInt(val, 10);
+	    var hours   = Math.floor(sec_num / 3600);
+	    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+	    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+	    if (hours   < 10) {hours   = "0"+hours;}
+	    if (minutes < 10) {minutes = "0"+minutes;}
+	    if (seconds < 10) {seconds = "0"+seconds;}
+	    var time    = hours + ' : ' + minutes + ' : ' + seconds;
+	    return time;
+	}
+
 	return {
 		init: init,
 		bind: bind
 	}
 })();
-
- function secondsToFormattedTime(val) {
-    var sec_num = parseInt(val, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = hours + ' : ' + minutes + ' : ' + seconds;
-    return time;
-}
